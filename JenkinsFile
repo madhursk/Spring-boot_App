@@ -1,0 +1,17 @@
+pipeline{
+    agent any
+    stages{
+        stage('Checkout'){
+            steps{
+                checkout([$class: 'GitSCM', branches: [[name: '*/master']], doGenerateSubmoduleConfigurations: false, extensions: [], submoduleCfg: [], userRemoteConfigs: [[url: 'https://github.com/madhursk/Spring-boot_App']]])
+            }
+            
+        }
+        
+        stage('Build'){
+            steps{
+                echo "Building Project"
+            }
+        }
+    }
+}
